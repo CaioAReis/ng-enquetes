@@ -1,7 +1,7 @@
 import { DatePipe, NgClass } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
-import { Poll } from "../../enums/Poll";
+import { Poll } from "../../models/Poll";
 import { Router } from "@angular/router";
 import { Button } from "../button/button";
 
