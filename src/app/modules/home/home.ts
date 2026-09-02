@@ -1,32 +1,21 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { finalize, firstValueFrom } from 'rxjs';
-import { Router } from '@angular/router';
-import { HomeService } from './service/home.service';
-import { PollCard } from "../../components/poll-card/poll-card";
+import { finalize } from "rxjs";
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject, signal } from "@angular/core";
 
-// Interface baseada na entidade do Spring Boot
-export interface Poll {
-  id: string;
-  question: string;
-  status: 'OPEN' | 'CLOSED';
-  startDate: string;
-  endDate: string;
-}
+import { Poll } from "../../models/Poll";
+import { HomeService } from "./service/home.service";
+import { PollCard } from "../../components/poll-card/poll-card";
+import { Loading } from "../../components/loading/loading";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   standalone: true,
-  imports: [CommonModule, PollCard],
+  imports: [CommonModule, PollCard, Loading],
   template: `
     <div class="py-10 px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
-        @if (isLoading()) {
-          <div class="flex justify-center items-center py-20">
-            <div class="animate-spin rounded-full size-20 border-b-4 border-white"></div>
-          </div>
-        } @else {
+        @if (isLoading()) { <app-loading /> }
+        @else {
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @for (poll of polls(); track $index) {
               <app-poll-card [poll]="poll" />
