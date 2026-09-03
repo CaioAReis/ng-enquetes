@@ -6,7 +6,7 @@ import { Component, inject, signal } from '@angular/core';
   selector: 'app-root',
   imports: [RouterOutlet, Button],
   template: `
-    <div class="flex flex-col gap-6 p-6 h-[100vh] bg-gray-900 py-10 px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-6 p-6 h-[100vh] bg-gray-900 py-10 px-4 sm:px-6 lg:px-8 overflow-y-auto">
       <div class="flex items-center justify-between mb-8">
         <div>
           <h1 class="text-3xl font-extrabold text-slate-100">
