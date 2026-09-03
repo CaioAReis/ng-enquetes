@@ -22,10 +22,6 @@ export class PollService {
     return this.http.get<Poll>(`${this.baseUrl}/polls/${id}`);
   }
 
-  loadOptions(pollId: string): Observable<Option[]> {
-    return this.http.get<Option[]>(`${this.baseUrl}/polls/${pollId}`);
-  }
-
   connectWS(pollId: string): void {
     if (this.stompClient && this.stompClient.active) return;
 
