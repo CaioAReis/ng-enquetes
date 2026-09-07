@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
   imports: [NgClass],
   template: `
     <button
+      [type]="type()"
       (click)="onClick.emit()"
       [disabled]="isDisabled() || isLoading()"
       class="bg-indigo-600 w-full hover:bg-indigo-700 text-white px-5 py-2.5 rounded-full font-medium transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -23,6 +24,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 })
 export class Button {
   onClick = output<void>();
+  type = input<"submit" | "button">();
 
   isLoading = input<boolean>(false);
   isDisabled = input<boolean>(false);

@@ -4,8 +4,8 @@ import { Component, OnInit, inject, signal } from "@angular/core";
 
 import { Poll } from "../../models/Poll";
 import { HomeService } from "./service/home.service";
-import { PollCard } from "../../components/poll-card/poll-card";
 import { Loading } from "../../components/loading/loading";
+import { PollCard } from "../../components/poll-card/poll-card";
 
 @Component({
   selector: "app-home",
@@ -20,7 +20,7 @@ import { Loading } from "../../components/loading/loading";
             @for (poll of polls(); track $index) {
               <app-poll-card [poll]="poll" />
             } @empty {
-              <div class="text-center py-20 bg-white rounded-xl border border-slate-200 border-dashed">
+              <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-20 bg-gray-800 rounded-xl border border-slate-200 border-dashed">
                 <p class="text-slate-500 text-lg">Nenhuma enquete encontrada.</p>
               </div>
             }
